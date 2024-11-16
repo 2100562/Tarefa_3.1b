@@ -1,2 +1,6 @@
-# Tarefa_3.1b
-Tarefa_3.1 - Programação Web Avançada 2024 - MEIW
+# Animalec
+An animals pedagogical app
+
+# Using json-server 
+To mock some dummy results
+https://github.com/typicode/json-server
