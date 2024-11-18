@@ -13,11 +13,11 @@
             <HeaderPage :title="user.name.toUpperCase()" />
             <h4 class="text-center">
               <small>
-                {{user.gamification.points}}
+                {{ user.gamification.points }}
                 <i class="fas fa-piggy-bank fa-lg mr-3"></i>
               </small>
               <small>
-                {{+user.gamification.quiz}}º
+                {{ +user.gamification.quiz }}º
                 <i class="fas fa-list-alt fa-lg mr-3"></i>
               </small>
               <small>
@@ -32,41 +32,44 @@
                 7
                 <i class="fas fa-comment fa-lg"></i>
               </small>
-       
+
             </h4>
           </b-col>
           <b-col md="6">
             <b-card-body title="PERFIL" align="center">
               <b-card-text align="left">
                 <h5>Dados pessoais</h5>
-                <strong>Nome: </strong>{{user.name}}
+                <strong>Nome: </strong>{{ user.name }}
                 <br />
-                <strong>Data de nascimento:</strong> {{setCurrentDateTime(user.birth_date)}}
+                <strong>Data de nascimento:</strong> {{ setCurrentDateTime(user.birth_date) }}
                 <br />
-                <strong>Cidade:</strong> {{user.location.city}} | <strong>País:</strong> {{user.location.country}}
+                <strong>Cidade:</strong> {{ user.location.city }} | <strong>País:</strong> {{ user.location.country }}
                 <br>
-                <strong>Descrição:</strong> {{user.description}}
+                <strong>Descrição:</strong> {{ user.description }}
                 <br />
                 <br />
-                <h5>Conta</h5>                
-                <strong>Data de registo:</strong> {{setCurrentDateTime(user.registration_date)}}
+                <h5>Conta</h5>
+                <strong>Data de registo:</strong> {{ setCurrentDateTime(user.registration_date) }}
                 <br />
-                <strong>Username:</strong> {{user.auth.username}}
+                <strong>Username:</strong> {{ user.auth.username }}
                 <br />
-                <strong>Tipo:</strong> {{user.type==='user'?'Utilizador normal':'Administrador'}}
+                <strong>Tipo:</strong>
+                {{ user.type === "user" ? "Utilizador normal" : user.type === "sponsor" ? "Patrocinador" : "Administrador"
+                }}
                 <br />
-                <br/>
-                <h5>Gamificação</h5>                
-                <strong>Nível atual:</strong> {{this.getUserLevelByPoints(user.gamification.points).level}}º ({{this.getUserLevelByPoints(user.gamification.points).name}})
                 <br />
-                <strong>Pontos:</strong> {{user.gamification.points}}
+                <h5>Gamificação</h5>
+                <strong>Nível atual:</strong> {{ this.getUserLevelByPoints(user.gamification.points).level }}º
+                ({{ this.getUserLevelByPoints(user.gamification.points).name }})
+                <br />
+                <strong>Pontos:</strong> {{ user.gamification.points }}
                 <br />
                 <strong>Ranking:</strong> 14º
                 <br />
-                <strong>Último quiz completado com sucesso:</strong> {{+user.gamification.quiz}}º
+                <strong>Último quiz completado com sucesso:</strong> {{ +user.gamification.quiz }}º
                 <br />
-                <br/>
-                
+                <br />
+
               </b-card-text>
               <br />
               <b-button variant="outline-success" class="mr-2 mt-2" @click="editProfileData()">
@@ -82,6 +85,36 @@
           </b-col>
         </b-row>
       </b-card>
+      <div v-if="user.type === 'sponsor'">
+        <b-card-body title="ANIMAIS PATROCINADOS" align="center"> </b-card-body>
+        <!--TABLE-->
+        <b-row>
+          <b-col cols="2"></b-col>
+          <b-col>
+            <table class="table table-striped">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col">
+                  NOME
+                  <i class="fas fa-arrow-up" v-if="sortType===1" @click="sort()"></i>
+                  <i class="fas fa-arrow-down" v-else @click="sort()"></i>
+                </th>
+                <th scope="col">GRUPO</th>
+                <th scope="col">NÍVEL</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="animal of animals" :key="animal._id">
+                <td class="pt-4">{{ animal.name }}</td>
+                <td class="pt-4">{{ animal.group }}</td>
+                <td class="pt-4">{{ animal.level }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </b-col>
+          <b-col cols="2"></b-col>
+        </b-row>
+      </div>
     </b-container>
   </section>
 </template>
@@ -91,6 +124,7 @@ import { AUTH_LOGOUT_SUCCESS } from "@/store/auth/auth.constants";
 import HeaderPage from "@/components/HeaderPage.vue";
 import { mapGetters } from "vuex";
 import router from "@/router";
+
 export default {
   components: {
     HeaderPage
@@ -126,10 +160,10 @@ export default {
       return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDay();
     },
     showRanking() {
-      router.push({name: 'ranking'})
+      router.push({ name: "ranking" });
     },
     editProfileData() {
-      router.push({name: 'editProfile'})
+      router.push({ name: "editProfile" });
     }
   }
 };

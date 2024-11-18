@@ -24,7 +24,7 @@
           >
           <b-nav-item to="#contacts">CONTACTOS</b-nav-item>
           <div v-if="isUserLoggedIn">
-            <div v-if="getUserType === 'user'">
+            <div v-if="getUserType === 'user' || getUserType === 'sponsor'">
               <b-nav-item :to="{ name: 'profile' }">
                 <img
                   class="avatar"
