@@ -84,6 +84,11 @@
                 placeholder="escreve link para som"
               />
             </div>
+            <div class="form-group">
+              <select id="sponsor" class="form-control form-control-lg" v-model="group" required>
+                <option value>-- SELECIONA PATROCINADOR --</option>
+              </select>
+            </div>
             <button type="submit" class="btn btn-outline-success btn-lg mr-2">
               <i class="fas fa-plus-square"></i>  ADICIONAR</button>
             <router-link
