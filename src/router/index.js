@@ -90,6 +90,11 @@ const routes = [
     component: () => import("@/views/sponsors/ListSponsors.vue")
   },
   {
+    path: "/admin/experts",
+    name: "listExperts",
+    component: () => import("@/views/experts/ListExperts.vue")
+  },
+  {
     path: "/profile",
     name: "profile",
     component: () => import("@/views/Profile.vue"),
