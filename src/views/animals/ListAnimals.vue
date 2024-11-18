@@ -34,6 +34,7 @@
                 </th>
                 <th scope="col">GRUPO</th>
                 <th scope="col">NÍVEL</th>
+                <th scope="col">PATROCINADOR</th>
                 <th scope="col">AÇÕES</th>
               </tr>
             </thead>
@@ -42,6 +43,7 @@
                 <td class="pt-4">{{animal.name}}</td>
                 <td class="pt-4">{{animal.group}}</td>
                 <td class="pt-4">{{animal.level}}</td>
+                <td class="pt-4">{{animal.sponsor}}</td>
                 <td>
                   <router-link
                     :to="{name:'editAnimal', params:{animalId: animal._id}}"
