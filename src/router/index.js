@@ -85,6 +85,11 @@ const routes = [
     component: () => import("@/views/animals/AddAnimal.vue")
   },
   {
+    path: "/admin/sponsors",
+    name: "listSponsors",
+    component: () => import("@/views/sponsors/ListSponsors.vue")
+  },
+  {
     path: "/profile",
     name: "profile",
     component: () => import("@/views/Profile.vue"),
@@ -108,7 +113,7 @@ const routes = [
       rule: "user"
     }
   },
-  
+
   {
     path: "/quizzes",
     name: "quizzes",
