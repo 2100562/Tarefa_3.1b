@@ -88,8 +88,8 @@ const actions = {
 };
 
 export const mutations = {
-  [SET_SPONSORS]: (state, animals) => {
-    state.sponsors = animals;
+  [SET_SPONSORS]: (state, sponsors) => {
+    state.sponsors = sponsors;
   },
   [SET_MESSAGE]: (state, message) => {
     state.message = message;

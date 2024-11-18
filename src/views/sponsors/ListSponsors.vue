@@ -1,7 +1,7 @@
 <template>
   <section class="page-section">
     <b-container>
-      <HeaderPage title="Gestão de Sponsors" />
+      <HeaderPage title="Gestão de Patrocinadores" />
       <!--MENU TOPO-->
       <b-row class="mb-4">
         <b-col cols="2"></b-col>
@@ -91,7 +91,7 @@ export default {
   },
   data: function() {
     return {
-      animals: [],
+      sponsors: [],
       sortType: 1
     };
   },
